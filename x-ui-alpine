@@ -20,7 +20,7 @@ echo "安装Alpine所需文件"
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/x-ui.db -o x-ui.db
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/config.json -o config.json
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/x-ui -o x-ui
-cp x-ui.db /etc/x-ui/x-ui.db
+mv x-ui.db /etc/x-ui/
 mv x-ui /etc/init.d/
 mv config.json  /usr/local/x-ui/bin/
 chown 501.dialout /etc/x-ui/x-ui.db
