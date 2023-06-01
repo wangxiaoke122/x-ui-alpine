@@ -3,6 +3,7 @@
 red='\033[31m\033[01m'
 green='\033[32m\033[01m'
 yellow='\033[33m\033[01m'
+plain='\033[0m'
 
 echo -e "${green}x-ui安装使用的是原版，脚本只是让x-ui运行到Alpine，并自动设置开机自启"
 echo -e "${red}x-ui面板命令无效，请打开web管理操作"
@@ -31,10 +32,41 @@ rc-update add /etc/init.d/x-ui
 echo "启动x-ui服务，可以ctrl+z退出"
 /etc/init.d/x-ui start
 
-echo "安装x-ui"
-echo "注意：安装完成x-ui，修改用户名时直接回车，不用理会错误"
+install_x-ui(){
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+}
 
+install_Misaka_x-ui(){
+bash <(curl -Ls https://raw.githubusercontent.com/sing-web/x-ui/main/install_CN.sh)
+}
+
+show_menu() {
+    echo -e "
+  ${green}安装x-ui${plain}
+  ${green}0.${plain} 退出脚本
+————————————————
+  ${green}1.${plain} 安装原版x-ui
+  ${green}2.${plain} 安装Misaka x-ui
+ "
+    show_status
+    echo && read -p "请输入选择 [0-2]: " num
+
+    case "${num}" in
+    0)
+        exit 0
+        ;;
+    1)
+        install_x-ui
+        ;;
+    2)
+        install_Misaka_x-ui
+        ;;
+    *)
+        LOGE "请输入正确的数字 [0-2]"
+        ;;
+    esac
+}
+    show_menu
 
 
 #/usr/local/x-ui/x-ui setting -username admin -password admin -port 9000
