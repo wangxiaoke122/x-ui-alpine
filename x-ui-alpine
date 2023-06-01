@@ -1,5 +1,14 @@
 #!/bin/sh
 #
+red='\033[31m\033[01m'
+green='\033[32m\033[01m'
+yellow='\033[33m\033[01m'
+
+echo -e "${green}x-ui安装使用的是原版，脚本只是让x-ui运行到Alpine，并自动设置开机自启"
+echo -e "${red}x-ui面板命令无效，请打开web管理操作"
+echo -e "${green}用户名密码admin，port9000"
+echo -e "${yellow}安全起见，安装两遍！"
+
 echo "x-ui install for alpine"
 echo "检查安装环境"
 apk add curl && apk add bash && apk add sudo && apk add wget
