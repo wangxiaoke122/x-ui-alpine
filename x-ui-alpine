@@ -39,6 +39,50 @@ bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 install_Misaka_x-ui(){
 bash <(curl -Ls https://raw.githubusercontent.com/sing-web/x-ui/main/install_CN.sh)
 }
+show_status() {
+    check_status
+    case $? in
+    0)
+        echo -e "面板状态: ${green}已运行${plain}"
+        show_enable_status
+        ;;
+    1)
+        echo -e "面板状态: ${yellow}未运行${plain}"
+        show_enable_status
+        ;;
+    2)
+        echo -e "面板状态: ${red}未安装${plain}"
+        ;;
+    esac
+    show_xray_status
+}
+
+show_enable_status() {
+    check_enabled
+    if [[ $? == 0 ]]; then
+        echo -e "是否开机自启: ${green}是${plain}"
+    else
+        echo -e "是否开机自启: ${red}否${plain}"
+    fi
+}
+
+check_xray_status() {
+    count=$(ps -ef | grep "xray-linux" | grep -v "grep" | wc -l)
+    if [[ count -ne 0 ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+show_xray_status() {
+    check_xray_status
+    if [[ $? == 0 ]]; then
+        echo -e "xray 状态: ${green}运行${plain}"
+    else
+        echo -e "xray 状态: ${red}未运行${plain}"
+    fi
+}
 
 show_menu() {
     echo -e "
