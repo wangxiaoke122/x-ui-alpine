@@ -91,7 +91,7 @@ show_menu() {
   ${green}0.${plain} 退出脚本
 ————————————————
   ${green}1.${plain} 安装原版x-ui
-  #${green}2.${plain} 安装Misaka x-ui
+$  ${green}2.${plain} 安装Misaka x-ui
   ${green}2.${plain} 重新设置面板端口
  "
     echo && read -p "请输入选择 [0-3]: " num
