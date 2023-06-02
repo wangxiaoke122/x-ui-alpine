@@ -40,7 +40,6 @@ Configuration
 bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke122/x-ui-alpine/master/install-2.sh)
 Configuration
 }
-#
 
 Configuration(){
 #/usr/local/x-ui/x-ui setting -username admin -password admin -port 9000
