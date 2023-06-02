@@ -67,9 +67,16 @@ confirm() {
     fi
 }
 
-set_port() {
-    confirm "重新设置端口将会导致面板数据清空，是否继续？" "y"
+confirm_set_port() {
+    confirm "重新设置面板端口会导致面板数据清空，是否继续" "y"
     if [[ $? == 0 ]]; then
+        set_port
+    else
+        show_menu
+    fi
+
+set_port() {
+    confirm_set_port
        echo && echo -n -e "输入端口号[1-65535]: " && read port
        if [[ -z "${port}" ]]; then
             LOGD "已取消"
@@ -78,9 +85,6 @@ set_port() {
         echo -e "设置端口完毕，现在请重启面板，并使用新设置的端口 ${green}${port}${plain} 访问面板"
         /etc/init.d/x-ui restart
        fi
-    else
-       show_menu
-    fi
 }
 
 show_menu() {
