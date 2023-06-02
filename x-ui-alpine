@@ -68,7 +68,7 @@ confirm() {
 }
 
 set_port() {
-    confirm "是否重启面板，重启面板也会重启 xray" "y"
+    confirm "重新设置端口将会导致面板数据清空，是否继续？" "y"
     if [[ $? == 0 ]]; then
        echo && echo -n -e "输入端口号[1-65535]: " && read port
        if [[ -z "${port}" ]]; then
