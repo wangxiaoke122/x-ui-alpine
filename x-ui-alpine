@@ -58,7 +58,7 @@ set_port() {
     else
         /usr/local/x-ui/x-ui setting -port ${port}
         echo -e "设置端口完毕，现在请重启面板，并使用新设置的端口 ${green}${port}${plain} 访问面板"
-        #service x-ui restart
+        service x-ui restart
     fi
 }
 
