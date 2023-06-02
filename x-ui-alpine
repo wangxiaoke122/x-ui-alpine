@@ -16,6 +16,9 @@ apk add curl && apk add bash && apk add sudo && apk add wget
 mkdir /lib64
 cp /lib/ld-musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
+install_x-ui() {
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+Configuration
 echo "安装Alpine所需文件"
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/x-ui.db -o x-ui.db
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/config.json -o config.json
@@ -31,16 +34,12 @@ chmod 0644 /usr/local/x-ui/bin/config.json
 rc-update add /etc/init.d/x-ui
 echo "启动x-ui服务，可以ctrl+z退出"
 /etc/init.d/x-ui start
-
-install_x-ui(){
-bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-Configuration
 }
 
-install_Misaka_x-ui(){
-bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke122/x-ui-alpine/master/install-2.sh)
-Configuration
-}
+#install_Misaka_x-ui() {
+#bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke122/x-ui-alpine/master/install-2.sh)
+#Configuration
+#}
 
 Configuration(){
 #/usr/local/x-ui/x-ui setting -username admin -password admin -port 9000
@@ -68,10 +67,9 @@ show_menu() {
   ${green}0.${plain} 退出脚本
 ————————————————
   ${green}1.${plain} 安装原版x-ui
-  ${green}2.${plain} 安装Misaka x-ui
-  ${green}3.${plain} 重新设置面板端口
+  ${green}2.${plain} 重新设置面板端口
  "
-    echo && read -p "请输入选择 [0-3]: " num
+    echo && read -p "请输入选择 [0-2]: " num
 
     case "${num}" in
     0)
@@ -81,13 +79,10 @@ show_menu() {
         install_x-ui
         ;;
     2)
-        install_Misaka_x-ui
-        ;;
-    3)
         set_port
         ;; 
     *)
-        LOGE "请输入正确的数字 [0-3]"
+        LOGE "请输入正确的数字 [0-2]"
         ;;
     esac
 }
