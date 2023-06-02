@@ -51,6 +51,21 @@ rc-service sshd restart
 echo "安装完成"
 }
 
+set_port() {
+    echo && echo -n -e "输入端口号[1-65535]: " && read port
+    if [[ -z "${port}" ]]; then
+        LOGD "已取消"
+    else
+        #/usr/local/x-ui/x-ui setting -port ${port}
+        echo -e "设置端口完毕，现在请重启面板，并使用新设置的端口 ${green}${port}${plain} 访问面板"
+        confirm_restart
+    fi
+}
+
+confirm_restart() {
+/etc/init.d/x-ui restart
+}
+
 show_menu() {
     echo -e "
   ${green}安装x-ui${plain}
@@ -58,8 +73,9 @@ show_menu() {
 ————————————————
   ${green}1.${plain} 安装原版x-ui
   ${green}2.${plain} 安装Misaka x-ui
+  ${green}3.${plain} 重新设置面板端口
  "
-    echo && read -p "请输入选择 [0-2]: " num
+    echo && read -p "请输入选择 [0-3]: " num
 
     case "${num}" in
     0)
@@ -71,8 +87,11 @@ show_menu() {
     2)
         install_Misaka_x-ui
         ;;
+    3)
+        set_port
+        ;; 
     *)
-        LOGE "请输入正确的数字 [0-2]"
+        LOGE "请输入正确的数字 [0-3]"
         ;;
     esac
 }
