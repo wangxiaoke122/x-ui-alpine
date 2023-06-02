@@ -110,4 +110,5 @@ show_menu() {
         ;;
     esac
 }
+
  show_menu
