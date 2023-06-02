@@ -51,22 +51,6 @@ rc-service sshd restart
 echo "安装完成"
 }
 
-confirm() {
-    if [[ $# > 1 ]]; then
-        echo && read -p "$1 [默认$2]: " temp
-        if [[ x"${temp}" == x"" ]]; then
-            temp=$2
-        fi
-    else
-        read -p "$1 [y/n]: " temp
-    fi
-    if [[ x"${temp}" == x"y" || x"${temp}" == x"Y" ]]; then
-        return 0
-    else
-        return 1
-    fi
-}
-
 set_port() {
        echo && echo -n -e "输入端口号[1-65535]: " && read port
        if [[ -z "${port}" ]]; then
@@ -77,14 +61,6 @@ set_port() {
            /etc/init.d/x-ui restart
        fi
 }
-
-confirm_set_port() {
-    confirm "重新设置面板端口会导致面板数据清空，是否继续" "y"
-    if [[ $? == 0 ]]; then
-        set_port
-    else
-        show_menu
-    fi
 
 show_menu() {
     echo -e "
@@ -108,7 +84,7 @@ show_menu() {
         install_Misaka_x-ui
         ;;
     3)
-        confirm_set_port
+        set_port
         ;; 
     *)
         LOGE "请输入正确的数字 [0-3]"
