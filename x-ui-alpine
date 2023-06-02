@@ -34,16 +34,15 @@ echo "启动x-ui服务，可以ctrl+z退出"
 
 install_x-ui(){
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-#/usr/local/x-ui/x-ui setting -username admin -password admin -port 9000
-echo "用户名admin,密码admin,端口9000(访问注意映射)"
-/etc/init.d/x-ui restart
-rc-update add sshd
-rc-service sshd restart
-echo "安装完成"
+Configuration
 }
 
 install_Misaka_x-ui(){
 bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke122/x-ui-alpine/master/install-2.sh)
+Configuration
+}
+
+Configuration(){
 #/usr/local/x-ui/x-ui setting -username admin -password admin -port 9000
 echo "用户名admin,密码admin,端口9000(访问注意映射)"
 /etc/init.d/x-ui restart
