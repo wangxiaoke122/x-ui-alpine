@@ -52,7 +52,7 @@ chmod 0644 /usr/local/x-ui/bin/config.json
 rc-update add /etc/init.d/x-ui
 echo "启动x-ui服务，可以ctrl+z退出"
 /etc/init.d/x-ui start
-bash <(curl -Ls https://raw.githubusercontent.com/sing-web/x-ui/main/x-ui_CN.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke123/x-ui-1/main/install_CN.sh)
 Configuration
 }
 
