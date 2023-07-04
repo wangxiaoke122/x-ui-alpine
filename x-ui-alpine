@@ -85,7 +85,7 @@ show_menu() {
   ${green}2.${plain} 安装魔改版x-ui
   ${green}3.${plain} 重新设置面板端口
  "
-    echo && read -p "请输入选择 [0-2]: " num
+    echo && read -p "请输入选择 [0-3]: " num
 
     case "${num}" in
     0)
@@ -101,7 +101,7 @@ show_menu() {
         set_port
         ;; 
     *)
-        LOGE "请输入正确的数字 [0-2]"
+        LOGE "请输入正确的数字 [0-3]"
         ;;
     esac
 }
