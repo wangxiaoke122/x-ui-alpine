@@ -22,6 +22,7 @@ curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/x-ui.db -o x-ui.db
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/config.json -o config.json
 curl -Ls https://github.com/kkddcclloo/x-ui/raw/main/xuidb/x-ui -o x-ui
 mkdir /etc/x-ui
+mkdir /usr/local/x-ui
 mkdir /usr/local/x-ui/bin
 mv x-ui.db /etc/x-ui/
 mv x-ui /etc/init.d/
