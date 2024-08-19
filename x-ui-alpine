@@ -33,7 +33,7 @@ rc-update add /etc/init.d/x-ui
 echo "启动x-ui服务，可以ctrl+z退出"
 /etc/init.d/x-ui start
 #bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
-bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install-1.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/wangxiaoke122/x-ui-alpine/master/install-1.sh)
 Configuration
 }
 
